@@ -1,0 +1,24 @@
+# This file describes an application. You can have multiple applications
+# in the same project.
+
+# The toolstack used to build the application.
+toolstack: "php:drupal"
+
+# The configuration of app when it is exposed to the web.
+web:
+    # The public directory of the app, relative to its root.
+    document_root: "/"
+    # The front-controller script to send non-static requests to.
+    passthru: "/index.php"
+
+# The mounts that will be performed when the package is deployed.
+mounts:
+    "/public/sites/default/files": "shared:files/files"
+    "/tmp": "shared:files/tmp"
+    "/private": "shared:files/private"
+
+# The configuration of scheduled execution.
+crons:
+    drupal:
+        spec: "*/20 * * * *"
+        cmd: "cd public ; drush core-cron"
