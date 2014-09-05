@@ -1,15 +1,5 @@
 # This file defines the services that power your project.
 
-php:
-    type: php
-    disk: 2048
-    access:
-        "ssh": "admin"
-    relationships:
-        "database": "mysql:mysql"
-        "solr": "solr:solr"
-        "redis": "redis:redis"
-
 mysql:
     type: mysql
     disk: 2048
