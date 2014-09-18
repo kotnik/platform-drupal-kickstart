@@ -32,6 +32,11 @@ mounts:
     "/tmp": "shared:files/tmp"
     "/private": "shared:files/private"
 
+# The hooks executed at various points in the lifecycle of the application.
+hooks:
+    # We run deploy hook after your application has been deployed and started.
+    deploy: "cd /app/public; drush -y features-revert-all ; drush -y updatedb"
+
 # The configuration of scheduled execution.
 crons:
     drupal:
